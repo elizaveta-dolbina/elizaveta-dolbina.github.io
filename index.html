@@ -190,6 +190,51 @@
             color: var(--primary-color);
         }
 
+        /* Кнопки соцсетей */
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-vk {
+            background-color: #4C75A3;
+            color: white;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .btn-telegram {
+            background-color: #0088cc;
+            color: white;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-btn i {
+            font-size: 1.2rem;
+        }
+
         /* Sections */
         section {
             padding: 5rem 0;
@@ -593,6 +638,16 @@
                 width: 40px;
                 height: 40px;
             }
+
+            .social-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-btn {
+                width: 200px;
+                justify-content: center;
+            }
         }
 
         @media (max-width: 576px) {
@@ -714,30 +769,35 @@
         </div>
     </section>
 
-    <!-- Methodology Section -->
-    <section id="methodology" class="methodology">
+    <!-- Quick Contact Section -->
+    <section style="background-color: var(--primary-color); color: white; text-align: center;">
         <div class="container">
             <div class="section-title">
-                <h2>Моя методика</h2>
-                <p>Индивидуальный подход к каждому ребенку</p>
+                <h2 style="color: white;">Свяжитесь со мной</h2>
+                <p>Выберите удобный способ связи</p>
             </div>
-            <div class="methodology-content">
-                <div class="method-card">
-                    <i class="fas fa-gamepad"></i>
-                    <h3>Игровой подход</h3>
-                    <p>Использую игровые методики для поддержания интереса и мотивации к обучению</p>
-                </div>
-                <div class="method-card">
-                    <i class="fas fa-user-friends"></i>
-                    <h3>Индивидуальная работа</h3>
-                    <p>Учитываю особенности восприятия и темп обучения каждого ребенка</p>
-                </div>
-                <div class="method-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Постепенное усложнение</h3>
-                    <p>Поэтапное введение новых тем с постоянным закреплением пройденного материала</p>
-                </div>
+            <div class="social-buttons">
+                <!-- Кнопка ВКонтакте -->
+                <a href="https://vk.com/your_profile" class="social-btn btn-vk" target="_blank">
+                    <i class="fab fa-vk"></i>
+                    ВКонтакте
+                </a>
+                
+                <!-- Кнопка WhatsApp -->
+                <a href="https://wa.me/79001234567" class="social-btn btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </a>
+                
+                <!-- Кнопка Telegram -->
+                <a href="https://t.me/your_username" class="social-btn btn-telegram" target="_blank">
+                    <i class="fab fa-telegram"></i>
+                    Telegram
+                </a>
             </div>
+            <p style="margin-top: 1rem; opacity: 0.9;">
+                Отвечаю в течение 2-3 часов в рабочее время
+            </p>
         </div>
     </section>
 
@@ -841,7 +901,6 @@
             </a>
             
             <p style="margin-top: 1rem; color: var(--text-light);">
-               
             </p>
         </div>
     </section>
@@ -854,9 +913,16 @@
                     <div class="footer-logo">Елизавета Долбина</div>
                     <p>Профессиональный репетитор начальных классов с многолетним опытом работы.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-vk"></i></a>
-                        <a href="#"><i class="fab fa-telegram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <!-- Ссылки в футере -->
+                        <a href="https://vk.com/your_profile" target="_blank" title="ВКонтакте">
+                            <i class="fab fa-vk"></i>
+                        </a>
+                        <a href="https://wa.me/79001234567" target="_blank" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://t.me/your_username" target="_blank" title="Telegram">
+                            <i class="fab fa-telegram"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -921,7 +987,7 @@
             });
         });
 
-        // Отслеживание кликов по кнопкам записи
+        // Отслеживание кликов по кнопкам
         document.querySelectorAll('a[href*="google.com/forms"]').forEach(button => {
             button.addEventListener('click', function() {
                 console.log('Клик по кнопке записи');
