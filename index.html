@@ -168,6 +168,12 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
+        .btn-large {
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+            margin: 1rem;
+        }
+
         .btn-outline {
             background-color: transparent;
             border: 2px solid white;
@@ -392,18 +398,20 @@
         }
 
         /* Contact Section */
-        .contact-container {
-            display: flex;
-            gap: 3rem;
+        .contact-section {
+            text-align: center;
+            background-color: var(--card-bg);
         }
 
         .contact-info {
-            flex: 1;
+            max-width: 600px;
+            margin: 0 auto 3rem;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
+            justify-content: center;
             margin-bottom: 1.5rem;
         }
 
@@ -414,32 +422,36 @@
             width: 30px;
         }
 
-        .contact-form {
-            flex: 1;
+        .booking-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin: 3rem 0;
         }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .form-control {
+        .step-card {
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            padding: 2rem;
             width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: var(--card-bg);
-            color: var(--text-color);
+            max-width: 200px;
+            text-align: center;
+            box-shadow: var(--shadow);
         }
 
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
         }
 
         /* Footer */
@@ -522,8 +534,7 @@
 
         /* Responsive Design */
         @media (max-width: 992px) {
-            .about-content,
-            .contact-container {
+            .about-content {
                 flex-direction: column;
             }
             
@@ -563,6 +574,11 @@
                 flex-direction: column;
                 gap: 2rem;
             }
+
+            .booking-steps {
+                flex-direction: column;
+                align-items: center;
+            }
         }
 
         @media (max-width: 576px) {
@@ -601,7 +617,7 @@
                     <li><a href="#subjects">Предметы</a></li>
                     <li><a href="#methodology">Методика</a></li>
                     <li><a href="#pricing">Стоимость</a></li>
-                    <li><a href="#contact">Контакты</a></li>
+                    <li><a href="#contact">Запись</a></li>
                 </ul>
             </nav>
             <button class="theme-toggle" id="themeToggle">
@@ -634,7 +650,6 @@
                     <p>Здравствуйте, меня зовут Елизавета Долбина. Я профессиональный педагог с 8-летним опытом работы в начальной школе.</p>
                     <p>Имею высшее педагогическое образование и специализацию по работе с детьми младшего школьного возраста. За годы практики разработала собственную методику преподавания, которая позволяет сделать обучение интересным и эффективным.</p>
                     <p>Моя цель - не только помочь детям освоить школьную программу, но и привить им интерес к учебе, развить логическое мышление, внимание и уверенность в своих силах.</p>
-                    <p>Я считаю, что каждый ребенок уникален и требует индивидуального подхода. На своих занятиях создаю комфортную атмосферу, в которой ученик не боится задавать вопросы и делать ошибки.</p>
                 </div>
                 <div class="about-image">
                     <img src="1.jpg" alt="Елизавета Долбина" class="profile-img">
@@ -702,34 +717,6 @@
         </div>
     </section>
 
-    <!-- Results Section -->
-    <section id="results">
-        <div class="container">
-            <div class="section-title">
-                <h2>Результаты работы</h2>
-                <p>Что получают мои ученики</p>
-            </div>
-            <div class="results-content">
-                <div class="result-card">
-                    <div class="number">95%</div>
-                    <p>Учеников улучшают успеваемость</p>
-                </div>
-                <div class="result-card">
-                    <div class="number">100%</div>
-                    <p>Детей развивают интерес к учебе</p>
-                </div>
-                <div class="result-card">
-                    <div class="number">4.7</div>
-                    <p>Средний балл по предметам</p>
-                </div>
-                <div class="result-card">
-                    <div class="number">50+</div>
-                    <p>Учеников успешно подготовлено</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Pricing Section -->
     <section id="pricing">
         <div class="container">
@@ -748,7 +735,7 @@
                         <li>Интерактивные материалы</li>
                         <li>Домашние задания</li>
                     </ul>
-                    <a href="#contact" class="btn">Выбрать</a>
+                    <a href="#contact" class="btn">Записаться</a>
                 </div>
                 <div class="pricing-card popular">
                     <div class="popular-badge">Популярно</div>
@@ -761,7 +748,7 @@
                         <li>Постоянный контроль прогресса</li>
                         <li>Консультации для родителей</li>
                     </ul>
-                    <a href="#contact" class="btn">Выбрать</a>
+                    <a href="#contact" class="btn">Записаться</a>
                 </div>
                 <div class="pricing-card">
                     <h3>Подготовка к школе</h3>
@@ -773,79 +760,65 @@
                         <li>Подготовка руки к письму</li>
                         <li>Адаптация к школьной среде</li>
                     </ul>
-                    <a href="#contact" class="btn">Выбрать</a>
+                    <a href="#contact" class="btn">Записаться</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" style="background-color: var(--card-bg);">
+    <section id="contact" class="contact-section">
         <div class="container">
             <div class="section-title">
-                <h2>Свяжитесь со мной</h2>
-                <p>Готова ответить на все ваши вопросы</p>
+                <h2>Запись на занятия</h2>
+                <p>Простая и удобная запись через Google Forms</p>
             </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Телефон</h3>
-                            <p>+7 (XXX) XXX-XX-XX</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <p>elizaveta.dolbina@example.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Адрес</h3>
-                            <p>г. г.Омск</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <h3>Время работы</h3>
-                            <p>Пн-Пт: 14:00 - 19:00<br>Сб: 10:00 - 15:00</p>
-                        </div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h3>Телефон для связи</h3>
+                        <p>+7 (XXX) XXX-XX-XX</p>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Имя родителя</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Телефон</label>
-                            <input type="tel" id="phone" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="class">Класс ребенка</label>
-                            <select id="class" class="form-control" required>
-                                <option value="">Выберите класс</option>
-                                <option value="1">1 класс</option>
-                                <option value="2">2 класс</option>
-                                <option value="3">3 класс</option>
-                                <option value="4">4 класс</option>
-                                <option value="prep">Подготовка к школе</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Сообщение</label>
-                            <textarea id="message" class="form-control" placeholder="Расскажите о целях занятий и особенностях ребенка..."></textarea>
-                        </div>
-                        <button type="submit" class="btn">Отправить заявку</button>
-                    </form>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>Email</h3>
+                        <p>elizaveta.dolbina@example.com</p>
+                    </div>
                 </div>
             </div>
+
+            <div class="booking-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Нажмите кнопку</h3>
+                    <p>Заполните короткую форму</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Я свяжусь с вами</h3>
+                    <p>В течение 24 часов</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Определим расписание</h3>
+                    <p>Подберем удобное время</p>
+                </div>
+            </div>
+
+            <!-- Основная кнопка записи -->
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdMHk5HXMWR5OmRjjyWj2S3lyDldBEaJtWlP13o46SENY9Xdw/viewform?usp=dialog" 
+               class="btn btn-large" 
+               target="_blank">
+                <i class="fas fa-calendar-check"></i> Записаться на занятие
+            </a>
+            
+            <p style="margin-top: 1rem; color: var(--text-light);">
+                Откроется форма Google Forms для заполнения заявки
+            </p>
         </div>
     </section>
 
@@ -855,12 +828,11 @@
             <div class="footer-content">
                 <div class="footer-about">
                     <div class="footer-logo">Елизавета Долбина</div>
-                    <p>Профессиональный репетитор начальных классов с многолетним опытом работы. Помогаю детям достигать академических успехов и развивать любовь к учебе.</p>
+                    <p>Профессиональный репетитор начальных классов с многолетним опытом работы.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-vk"></i></a>
                         <a href="#"><i class="fab fa-telegram"></i></a>
                         <a href="#"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -869,18 +841,8 @@
                         <li><a href="#home">Главная</a></li>
                         <li><a href="#about">Обо мне</a></li>
                         <li><a href="#subjects">Предметы</a></li>
-                        <li><a href="#methodology">Методика</a></li>
                         <li><a href="#pricing">Стоимость</a></li>
-                        <li><a href="#contact">Контакты</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Предметы</h4>
-                    <ul>
-                        <li><a href="#">Математика</a></li>
-                        <li><a href="#">Русский язык</a></li>
-                        <li><a href="#">Чтение</a></li>
-                        <li><a href="#">Окружающий мир</a></li>
+                        <li><a href="#contact">Запись</a></li>
                     </ul>
                 </div>
             </div>
@@ -892,11 +854,10 @@
     </footer>
 
     <script>
-        // Theme Toggle
+        // Переключение темы
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = themeToggle.querySelector('i');
         
-        // Check for saved theme or prefer-color-scheme
         const savedTheme = localStorage.getItem('theme');
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         
@@ -919,15 +880,13 @@
                 themeIcon.classList.add('fa-moon');
             }
         });
-        
-        // Smooth scrolling for anchor links
+
+        // Плавная прокрутка
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-                
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
@@ -937,33 +896,12 @@
                 }
             });
         });
-        
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Спасибо за вашу заявку! Я свяжусь с вами в ближайшее время.');
-            this.reset();
-        });
-        
-        // Update active nav link on scroll
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('nav ul li a');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
+
+        // Отслеживание кликов по кнопкам записи
+        document.querySelectorAll('a[href*="google.com/forms"]').forEach(button => {
+            button.addEventListener('click', function() {
+                // Можно добавить аналитику здесь
+                console.log('Клик по кнопке записи');
             });
         });
     </script>
