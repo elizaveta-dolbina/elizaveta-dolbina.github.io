@@ -3,153 +3,968 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Елизавета Долбина</title>
+    <title>Елизавета Долбина - Репетитор начальных классов</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #81C784;
+            --accent-color: #FF9800;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --text-color: #333;
+            --text-light: #6c757d;
             --bg-color: #ffffff;
-            --text-color: #333333;
-            --accent-color: #6a5acd;
-            --secondary-color: #f0f0f0;
+            --card-bg: #f8f9fa;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
 
-        [data-theme="dark"] {
-            --bg-color: #1a1a1a;
-            --text-color: #f0f0f0;
-            --accent-color: #9370db;
-            --secondary-color: #2d2d2d;
+        .dark-theme {
+            --primary-color: #66BB6A;
+            --secondary-color: #A5D6A7;
+            --accent-color: #FFB74D;
+            --light-color: #212529;
+            --dark-color: #f8f9fa;
+            --text-color: #f8f9fa;
+            --text-light: #adb5bd;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background-color 0.3s, color 0.3s;
+            transition: var(--transition);
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            text-align: center;
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 800px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
             width: 100%;
         }
 
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            color: var(--accent-color);
-            font-weight: 300;
-            letter-spacing: 2px;
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 1.5rem;
         }
 
-        .subtitle {
-            font-size: 1.8rem;
-            margin-bottom: 40px;
-            font-weight: 300;
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
             opacity: 0.9;
         }
 
-        .signature {
-            margin-top: 60px;
-            font-size: 1rem;
-            opacity: 0.7;
-            font-style: italic;
-        }
-
-        .theme-switch {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: var(--secondary-color);
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
             border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
             cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
         }
 
-        .theme-switch:hover {
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Subjects Section */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .subject-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .subject-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .subject-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .subject-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Methodology Section */
+        .methodology {
+            background-color: var(--card-bg);
+        }
+
+        .methodology-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .method-card {
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .method-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Pricing Section */
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--accent-color);
             transform: scale(1.05);
         }
 
-        .theme-icon {
+        .popular-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transform: rotate(45deg) translate(30%, -50%);
+        }
+
+        .pricing-card h3 {
             font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 1.5rem 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Results Section */
+        .results-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .result-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 250px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card .number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 1rem;
+            width: 30px;
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        .footer-links ul li a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .signature {
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1);
+            }
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
+            .header-container {
+                flex-direction: column;
             }
             
-            .subtitle {
-                font-size: 1.4rem;
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
             }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
                 font-size: 2rem;
             }
             
-            .subtitle {
-                font-size: 1.2rem;
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 3rem 0;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+            
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
             }
         }
     </style>
 </head>
 <body>
-    <button class="theme-switch" id="themeSwitch">
-        <span class="theme-icon">🌙</span>
-    </button>
-    
-    <div class="container">
-        <h1>Елизавета Долбина</h1>
-        <p class="subtitle">Здравствуйте, меня зовут Елизавета Долбина</p>
-        <p class="signature">byDZ</p>
-    </div>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-pencil-alt"></i>
+                Елизавета Долбина
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">Главная</a></li>
+                    <li><a href="#about">Обо мне</a></li>
+                    <li><a href="#subjects">Предметы</a></li>
+                    <li><a href="#methodology">Методика</a></li>
+                    <li><a href="#pricing">Стоимость</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Репетитор начальных классов</h1>
+            <p>Помогаю детям 1-4 классов освоить школьную программу, развить интерес к учебе и уверенность в своих силах</p>
+            <div class="btn-container">
+                <a href="#contact" class="btn">Записаться на занятие</a>
+                <a href="#about" class="btn btn-outline">Узнать больше</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Обо мне</h2>
+                <p>Познакомьтесь с вашим репетитором</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Здравствуйте, меня зовут Елизавета Долбина. Я профессиональный педагог с 8-летним опытом работы в начальной школе.</p>
+                    <p>Имею высшее педагогическое образование и специализацию по работе с детьми младшего школьного возраста. За годы практики разработала собственную методику преподавания, которая позволяет сделать обучение интересным и эффективным.</p>
+                    <p>Моя цель - не только помочь детям освоить школьную программу, но и привить им интерес к учебе, развить логическое мышление, внимание и уверенность в своих силах.</p>
+                    <p>Я считаю, что каждый ребенок уникален и требует индивидуального подхода. На своих занятиях создаю комфортную атмосферу, в которой ученик не боится задавать вопросы и делать ошибки.</p>
+                </div>
+                <div class="about-image">
+                    <img src="1.jpg" alt="Елизавета Долбина" class="profile-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subjects Section -->
+    <section id="subjects" style="background-color: var(--card-bg);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Преподаваемые предметы</h2>
+                <p>Все дисциплины начальной школы</p>
+            </div>
+            <div class="subjects-grid">
+                <div class="subject-card">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Математика</h3>
+                    <p>Изучение счета, решение задач, развитие логического мышления и математической грамотности</p>
+                </div>
+                <div class="subject-card">
+                    <i class="fas fa-language"></i>
+                    <h3>Русский язык</h3>
+                    <p>Грамматика, орфография, каллиграфия, развитие речи и письменных навыков</p>
+                </div>
+                <div class="subject-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Чтение</h3>
+                    <p>Развитие техники чтения, понимание текста, работа с литературными произведениями</p>
+                </div>
+                <div class="subject-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Окружающий мир</h3>
+                    <p>Изучение природы, общества, развитие кругозора и познавательного интереса</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section id="methodology" class="methodology">
+        <div class="container">
+            <div class="section-title">
+                <h2>Моя методика</h2>
+                <p>Индивидуальный подход к каждому ребенку</p>
+            </div>
+            <div class="methodology-content">
+                <div class="method-card">
+                    <i class="fas fa-gamepad"></i>
+                    <h3>Игровой подход</h3>
+                    <p>Использую игровые методики для поддержания интереса и мотивации к обучению</p>
+                </div>
+                <div class="method-card">
+                    <i class="fas fa-user-friends"></i>
+                    <h3>Индивидуальная работа</h3>
+                    <p>Учитываю особенности восприятия и темп обучения каждого ребенка</p>
+                </div>
+                <div class="method-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Постепенное усложнение</h3>
+                    <p>Поэтапное введение новых тем с постоянным закреплением пройденного материала</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results">
+        <div class="container">
+            <div class="section-title">
+                <h2>Результаты работы</h2>
+                <p>Что получают мои ученики</p>
+            </div>
+            <div class="results-content">
+                <div class="result-card">
+                    <div class="number">95%</div>
+                    <p>Учеников улучшают успеваемость</p>
+                </div>
+                <div class="result-card">
+                    <div class="number">100%</div>
+                    <p>Детей развивают интерес к учебе</p>
+                </div>
+                <div class="result-card">
+                    <div class="number">4.7</div>
+                    <p>Средний балл по предметам</p>
+                </div>
+                <div class="result-card">
+                    <div class="number">50+</div>
+                    <p>Учеников успешно подготовлено</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Стоимость занятий</h2>
+                <p>Доступные цены для индивидуального подхода</p>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Разовое занятие</h3>
+                    <div class="price">800 <span>руб/час</span></div>
+                    <ul class="pricing-features">
+                        <li>Индивидуальный подход</li>
+                        <li>Диагностика уровня знаний</li>
+                        <li>Разбор сложных тем</li>
+                        <li>Интерактивные материалы</li>
+                        <li>Домашние задания</li>
+                    </ul>
+                    <a href="#contact" class="btn">Выбрать</a>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Популярно</div>
+                    <h3>Абонемент на 8 занятий</h3>
+                    <div class="price">5 600 <span>руб</span></div>
+                    <ul class="pricing-features">
+                        <li>Экономия 400 рублей</li>
+                        <li>Регулярные занятия 2 раза в неделю</li>
+                        <li>Системный подход к обучению</li>
+                        <li>Постоянный контроль прогресса</li>
+                        <li>Консультации для родителей</li>
+                    </ul>
+                    <a href="#contact" class="btn">Выбрать</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Подготовка к школе</h3>
+                    <div class="price">700 <span>руб/час</span></div>
+                    <ul class="pricing-features">
+                        <li>Для детей 5-7 лет</li>
+                        <li>Развитие необходимых навыков</li>
+                        <li>Основы чтения и счета</li>
+                        <li>Подготовка руки к письму</li>
+                        <li>Адаптация к школьной среде</li>
+                    </ul>
+                    <a href="#contact" class="btn">Выбрать</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: var(--card-bg);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Свяжитесь со мной</h2>
+                <p>Готова ответить на все ваши вопросы</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Телефон</h3>
+                            <p>+7 (XXX) XXX-XX-XX</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>elizaveta.dolbina@example.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Адрес</h3>
+                            <p>г. Москва, ул. Образцова, д. 25</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Время работы</h3>
+                            <p>Пн-Пт: 14:00 - 19:00<br>Сб: 10:00 - 15:00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Имя родителя</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="class">Класс ребенка</label>
+                            <select id="class" class="form-control" required>
+                                <option value="">Выберите класс</option>
+                                <option value="1">1 класс</option>
+                                <option value="2">2 класс</option>
+                                <option value="3">3 класс</option>
+                                <option value="4">4 класс</option>
+                                <option value="prep">Подготовка к школе</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Сообщение</label>
+                            <textarea id="message" class="form-control" placeholder="Расскажите о целях занятий и особенностях ребенка..."></textarea>
+                        </div>
+                        <button type="submit" class="btn">Отправить заявку</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Елизавета Долбина</div>
+                    <p>Профессиональный репетитор начальных классов с многолетним опытом работы. Помогаю детям достигать академических успехов и развивать любовь к учебе.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#about">Обо мне</a></li>
+                        <li><a href="#subjects">Предметы</a></li>
+                        <li><a href="#methodology">Методика</a></li>
+                        <li><a href="#pricing">Стоимость</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Предметы</h4>
+                    <ul>
+                        <li><a href="#">Математика</a></li>
+                        <li><a href="#">Русский язык</a></li>
+                        <li><a href="#">Чтение</a></li>
+                        <li><a href="#">Окружающий мир</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Елизавета Долбина. Все права защищены.</p>
+                <p class="signature">byDZ</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        const themeSwitch = document.getElementById('themeSwitch');
-        const themeIcon = themeSwitch.querySelector('.theme-icon');
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
         
-        // Проверяем сохранённую тему или системные настройки
+        // Check for saved theme or prefer-color-scheme
         const savedTheme = localStorage.getItem('theme');
         const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         
         if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            themeIcon.textContent = '☀️';
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-            themeIcon.textContent = '🌙';
+            document.body.classList.add('dark-theme');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
         }
         
-        themeSwitch.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
             
-            if (currentTheme === 'light') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                themeIcon.textContent = '☀️';
+            if (document.body.classList.contains('dark-theme')) {
                 localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
             } else {
-                document.documentElement.setAttribute('data-theme', 'light');
-                themeIcon.textContent = '🌙';
                 localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
             }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Спасибо за вашу заявку! Я свяжусь с вами в ближайшее время.');
+            this.reset();
+        });
+        
+        // Update active nav link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav ul li a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
