@@ -190,51 +190,6 @@
             color: var(--primary-color);
         }
 
-        /* Кнопки соцсетей */
-        .social-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-
-        .social-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-        }
-
-        .btn-vk {
-            background-color: #4C75A3;
-            color: white;
-        }
-
-        .btn-whatsapp {
-            background-color: #25D366;
-            color: white;
-        }
-
-        .btn-telegram {
-            background-color: #0088cc;
-            color: white;
-        }
-
-        .social-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .social-btn i {
-            font-size: 1.2rem;
-        }
-
         /* Sections */
         section {
             padding: 5rem 0;
@@ -264,32 +219,41 @@
             border-radius: 2px;
         }
 
-        /* About Section */
-        .about-content {
-            display: flex;
+        /* About Section - Классический вариант */
+        .about-classic {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
             align-items: center;
-            gap: 3rem;
         }
 
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            color: var(--text-light);
-        }
-
-        .about-image {
-            flex: 1;
-            text-align: center;
-        }
-
-        .profile-img {
+        .about-image img {
             width: 100%;
-            max-width: 400px;
-            border-radius: 10px;
+            border-radius: 20px;
             box-shadow: var(--shadow);
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+            flex: 1;
+        }
+
+        .number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .label {
+            font-size: 0.9rem;
+            color: var(--text-light);
         }
 
         /* Subjects Section */
@@ -472,6 +436,50 @@
             width: 30px;
         }
 
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-vk {
+            background-color: #4C75A3;
+            color: white;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .btn-telegram {
+            background-color: #0088cc;
+            color: white;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-btn i {
+            font-size: 1.2rem;
+        }
+
         .booking-steps {
             display: flex;
             flex-wrap: wrap;
@@ -584,12 +592,14 @@
 
         /* Responsive Design */
         @media (max-width: 992px) {
-            .about-content {
-                flex-direction: column;
+            .about-classic {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
             
-            .about-image {
-                order: -1;
+            .about-stats {
+                flex-direction: column;
+                gap: 1rem;
             }
             
             .pricing-card.popular {
@@ -717,21 +727,37 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About Section - Классический вариант -->
     <section id="about">
         <div class="container">
             <div class="section-title">
                 <h2>Обо мне</h2>
                 <p>Познакомьтесь с вашим репетитором</p>
             </div>
-            <div class="about-content">
-                <div class="about-text">
+            <div class="about-classic">
+                <div class="about-image">
+                    <img src="1.jpg" alt="Елизавета Долбина">
+                </div>
+                <div class="about-content">
+                    <h3>Профессиональный репетитор</h3>
                     <p>Здравствуйте, меня зовут Елизавета Долбина. Я профессиональный педагог с 8-летним опытом работы в начальной школе.</p>
                     <p>Имею высшее педагогическое образование и специализацию по работе с детьми младшего школьного возраста. За годы практики разработала собственную методику преподавания, которая позволяет сделать обучение интересным и эффективным.</p>
                     <p>Моя цель - не только помочь детям освоить школьную программу, но и привить им интерес к учебе, развить логическое мышление, внимание и уверенность в своих силах.</p>
-                </div>
-                <div class="about-image">
-                    <img src="1.jpg" alt="Елизавета Долбина" class="profile-img">
+                    
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="number">8+</span>
+                            <span class="label">лет опыта</span>
+                        </div>
+                        <div class="stat">
+                            <span class="number">200+</span>
+                            <span class="label">учеников</span>
+                        </div>
+                        <div class="stat">
+                            <span class="number">95%</span>
+                            <span class="label">успеваемость</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -769,6 +795,33 @@
         </div>
     </section>
 
+    <!-- Methodology Section -->
+    <section id="methodology" class="methodology">
+        <div class="container">
+            <div class="section-title">
+                <h2>Моя методика</h2>
+                <p>Индивидуальный подход к каждому ребенку</p>
+            </div>
+            <div class="methodology-content">
+                <div class="method-card">
+                    <i class="fas fa-gamepad"></i>
+                    <h3>Игровой подход</h3>
+                    <p>Использую игровые методики для поддержания интереса и мотивации к обучению</p>
+                </div>
+                <div class="method-card">
+                    <i class="fas fa-user-friends"></i>
+                    <h3>Индивидуальная работа</h3>
+                    <p>Учитываю особенности восприятия и темп обучения каждого ребенка</p>
+                </div>
+                <div class="method-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Постепенное усложнение</h3>
+                    <p>Поэтапное введение новых тем с постоянным закреплением пройденного материала</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Quick Contact Section -->
     <section style="background-color: var(--primary-color); color: white; text-align: center;">
         <div class="container">
@@ -784,7 +837,7 @@
                 </a>
                 
                 <!-- Кнопка WhatsApp -->
-                <a href="https://wa.me/79514083232" class="social-btn btn-whatsapp" target="_blank">
+                <a href="https://wa.me/79001234567" class="social-btn btn-whatsapp" target="_blank">
                     <i class="fab fa-whatsapp"></i>
                     WhatsApp
                 </a>
@@ -901,6 +954,7 @@
             </a>
             
             <p style="margin-top: 1rem; color: var(--text-light);">
+                Откроется форма Google Forms для заполнения заявки
             </p>
         </div>
     </section>
@@ -931,6 +985,7 @@
                         <li><a href="#home">Главная</a></li>
                         <li><a href="#about">Обо мне</a></li>
                         <li><a href="#subjects">Предметы</a></li>
+                        <li><a href="#methodology">Методика</a></li>
                         <li><a href="#pricing">Стоимость</a></li>
                         <li><a href="#contact">Запись</a></li>
                     </ul>
