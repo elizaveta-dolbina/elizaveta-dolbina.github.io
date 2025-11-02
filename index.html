@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Елизавета Николаевна</title>
+    <title>Елизавета Николаевна - Репетитор начальных классов</title>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <style>
         :root {
             --primary-color: #4CAF50;
@@ -57,6 +58,44 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+
+        /* Address Section */
+        .address-bar {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 0;
+            font-size: 0.9rem;
+        }
+
+        .address-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .address-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .address-info i {
+            color: var(--accent-color);
+        }
+
+        .map-link {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+        }
+
+        .map-link:hover {
+            color: var(--accent-color);
         }
 
         /* Header & Navigation */
@@ -222,6 +261,96 @@
             height: 4px;
             background-color: var(--accent-color);
             border-radius: 2px;
+        }
+
+        /* Location Section */
+        .location-section {
+            background-color: var(--card-bg);
+            padding: 4rem 0;
+        }
+
+        .location-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .location-info {
+            padding-right: 2rem;
+        }
+
+        .location-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .location-info p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .address-highlight {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: var(--bg-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+
+        .address-highlight i {
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+
+        .address-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .address-text p {
+            margin: 0;
+            color: var(--text-light);
+        }
+
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 400px;
+            position: relative;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .map-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .map-overlay h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .map-overlay p {
+            margin: 0;
+            font-size: 0.9rem;
         }
 
         /* About Section - Классический вариант */
@@ -620,6 +749,19 @@
             .pricing-card.popular {
                 transform: scale(1);
             }
+            
+            .location-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .location-info {
+                padding-right: 0;
+            }
+            
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -673,6 +815,12 @@
                 width: 200px;
                 justify-content: center;
             }
+            
+            .address-container {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
         }
 
         @media (max-width: 576px) {
@@ -707,6 +855,20 @@
     </style>
 </head>
 <body>
+    <!-- Address Bar -->
+    <div class="address-bar">
+        <div class="container address-container">
+            <div class="address-info">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Омск, ул. Красногвардейская, 40</span>
+            </div>
+            <a href="#location" class="map-link">
+                <i class="fas fa-map"></i>
+                <span>Посмотреть на карте</span>
+            </a>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -718,6 +880,7 @@
                 <ul>
                     <li><a href="#home" class="active">Главная</a></li>
                     <li><a href="#about">Обо мне</a></li>
+                    <li><a href="#location">Адрес</a></li>
                     <li><a href="#subjects">Предметы</a></li>
                     <li><a href="#methodology">Методика</a></li>
                     <li><a href="#pricing">Стоимость</a></li>
@@ -738,6 +901,44 @@
             <div class="btn-container">
                 <a href="#contact" class="btn">Записаться на занятие</a>
                 <a href="#about" class="btn btn-outline">Узнать больше</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="location-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Место проведения занятий</h2>
+                <p>Комфортная и удобная учебная среда</p>
+            </div>
+            <div class="location-container">
+                <div class="location-info">
+                    <h3>Занятия проходят в уютном и оборудованном кабинете</h3>
+                    <p>Я создала специальное образовательное пространство, где каждый ребенок чувствует себя комфортно и может полностью сосредоточиться на учебе. Кабинет оснащен всем необходимым для эффективных занятий:</p>
+                    <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+                        <li>Учебные материалы и пособия</li>
+                        <li>Интерактивные развивающие игры</li>
+                        <li>Комфортная мебель для правильной осанки</li>
+                        <li>Хорошее освещение и проветриваемое помещение</li>
+                    </ul> 
+                    
+                    <div class="address-highlight">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="address-text">
+                            <h4>Адрес проведения занятий</h4>
+                            <p>г. Омск, ул. Красногвардейская, 40</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <div id="map"></div>
+                    <div class="map-overlay">
+                        <h3>Карта проезда</h3>
+                        <p>г. Омск, ул. Красногвардейская, 40</p>
+                        <p>Удобный подъезд и парковка</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -910,13 +1111,27 @@
                 </div>
                 <div class="pricing-card">
                     <h3>Подготовка к школе</h3>
-                    <div class="price">700 <span>руб/час</span></div>
+                    <div class="price">1 250 <span>руб / 2 часа</span></div>
                     <ul class="pricing-features">
+                        <li>1 занятие в неделю (СБ или ВС)</li>
                         <li>Для детей 5-7 лет</li>
                         <li>Развитие необходимых навыков</li>
                         <li>Основы чтения и счета</li>
                         <li>Подготовка руки к письму</li>
                         <li>Адаптация к школьной среде</li>
+                    </ul>
+                    <a href="#contact" class="btn">Записаться</a>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Выгодно</div>
+                    <h3>Абонемент на подготовку к школе</h3>
+                    <div class="price">4 500 <span>руб</span></div>
+                    <ul class="pricing-features">
+                        <li>Экономия 500 рублей</li>
+                        <li>Регулярные занятия 2 раза в неделю</li>
+                        <li>Системный подход к обучению</li>
+                        <li>Постоянный контроль прогресса</li>
+                        <li>Консультации для родителей</li>
                     </ul>
                     <a href="#contact" class="btn">Записаться</a>
                 </div>
@@ -1003,6 +1218,7 @@
                     <ul>
                         <li><a href="#home">Главная</a></li>
                         <li><a href="#about">Обо мне</a></li>
+                        <li><a href="#location">Адрес</a></li>
                         <li><a href="#subjects">Предметы</a></li>
                         <li><a href="#pricing">Стоимость</a></li>
                         <li><a href="#contact">Запись</a></li>
@@ -1013,6 +1229,7 @@
                     <ul>
                         <li><i class="fas fa-phone"></i> +7 (951) 408-32-32</li>
                         <li><i class="fas fa-envelope"></i> liza-dolbina@mail.ru</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Омск, ул. Красногвардейская, 40</li>
                     </ul>
                 </div>
             </div>
@@ -1072,6 +1289,19 @@
             button.addEventListener('click', function() {
                 console.log('Клик по кнопке записи');
             });
+        });
+
+        // Инициализация карты
+        ymaps.ready(function () {
+            var myMap = new ymaps.Map('map', {
+                center: [54.9924, 73.3682], // Координаты центра города Омска
+                zoom: 14
+            });
+            var myPlacemark = new ymaps.Placemark([54.9924, 73.3682], {
+                hintContent: 'Красногвардейская 40, Омск',
+                balloonContent: 'Занятия проводятся по адресу: Красногвардейская 40, Омск'
+            });
+            myMap.geoObjects.add(myPlacemark);
         });
     </script>
 </body>
