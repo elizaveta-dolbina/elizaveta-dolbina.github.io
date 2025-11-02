@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Елизавета Николаевна</title>
-        <!-- Favicon -->
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -476,6 +476,16 @@
             color: white;
         }
 
+        .btn-phone {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .btn-email {
+            background-color: #FF5722;
+            color: white;
+        }
+
         .social-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
@@ -834,6 +844,13 @@
                 <h2 style="color: white;">Свяжитесь со мной</h2>
                 <p>Выберите удобный способ связи</p>
             </div>
+            <div class="social-buttons">
+                <!-- Кнопка Телефон -->
+                <a href="tel:+79514083232" class="social-btn btn-phone">
+                    <i class="fas fa-phone"></i>
+                    Позвонить
+                </a>
+                
                 <!-- Кнопка WhatsApp -->
                 <a href="https://wa.me/79514083232" class="social-btn btn-whatsapp" target="_blank">
                     <i class="fab fa-whatsapp"></i>
@@ -844,6 +861,12 @@
                 <a href="https://t.me/Li030599" class="social-btn btn-telegram" target="_blank">
                     <i class="fab fa-telegram"></i>
                     Telegram
+                </a>
+                
+                <!-- Кнопка Email -->
+                <a href="mailto:liza-dolbina@mail.ru" class="social-btn btn-email">
+                    <i class="fas fa-envelope"></i>
+                    Email
                 </a>
             </div>
             <p style="margin-top: 1rem; opacity: 0.9;">
@@ -934,26 +957,72 @@
             </a>
             
             <p style="margin-top: 1rem; color: var(--text-light);">
+                Или свяжитесь со мной напрямую любым удобным способом
             </p>
-        </div>
-         <div class="contact-info">
-                <div class="contact-item">
+            
+            <!-- Дополнительные кнопки связи -->
+            <div class="social-buttons" style="margin-top: 2rem;">
+                <a href="tel:+79514083232" class="social-btn btn-phone">
                     <i class="fas fa-phone"></i>
-                    <div>
-                        <h3></h3>
-                        <h3>Телефон для связи</h3>
-                        <p>+7 (951) 408-32-32</p>
+                    Позвонить
+                </a>
+                
+                <a href="https://wa.me/79514083232" class="social-btn btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </a>
+                
+                <a href="https://t.me/Li030599" class="social-btn btn-telegram" target="_blank">
+                    <i class="fab fa-telegram"></i>
+                    Telegram
+                </a>
+                
+                <a href="mailto:liza-dolbina@mail.ru" class="social-btn btn-email">
+                    <i class="fas fa-envelope"></i>
+                    Email
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Елизавета Николаевна</div>
+                    <p>Репетитор начальных классов с 8-летним опытом работы</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/79514083232" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://t.me/Li030599" target="_blank"><i class="fab fa-telegram"></i></a>
+                        <a href="mailto:liza-dolbina@mail.ru"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <h3>Email</h3>
-                        <p>liza-dolbina@mail.ru</p>
-                    </div>
+                <div class="footer-links">
+                    <h4>Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#about">Обо мне</a></li>
+                        <li><a href="#subjects">Предметы</a></li>
+                        <li><a href="#pricing">Стоимость</a></li>
+                        <li><a href="#contact">Запись</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +7 (951) 408-32-32</li>
+                        <li><i class="fas fa-envelope"></i> liza-dolbina@mail.ru</li>
+                    </ul>
                 </div>
             </div>
-    </section>
+            <div class="copyright">
+                <p>&copy; 2023 Елизавета Николаевна. Все права защищены.</p>
+                <p class="signature">Репетитор начальных классов</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
         // Переключение темы
         const themeToggle = document.getElementById('themeToggle');
